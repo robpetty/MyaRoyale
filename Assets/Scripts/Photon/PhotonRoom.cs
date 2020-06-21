@@ -66,7 +66,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         readyToCount = false;
         readyToStart = false;
         lessThanMaxPlayers = startingTime;
-        atMaxPlayers = 6;
+        atMaxPlayers = 6;   // set to 6, if max playesrs are in.  Meaning if 10 hurry and join, it cuts 4 seconds off load time of game.
         timeToStart = startingTime;
     }
     public override void OnJoinedRoom()
