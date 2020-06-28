@@ -185,6 +185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterValue: 0
   myCharacter: {fileID: 0}
+  myCamera: {fileID: 0}
+  myAL: {fileID: 0}
 --- !u!1 &2208054899833143993
 GameObject:
   m_ObjectHideFlags: 0

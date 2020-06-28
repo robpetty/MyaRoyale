@@ -1,6 +1,7 @@
 ﻿using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class AvatarSetup : MonoBehaviour
@@ -8,6 +9,9 @@ public class AvatarSetup : MonoBehaviour
     private PhotonView pv;
     public int characterValue;
     public GameObject myCharacter;
+
+    public Camera myCamera;
+    public AudioListener myAL;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +22,11 @@ public class AvatarSetup : MonoBehaviour
         {
             // AllBuffered, allows people who join later to get this so local character shows up to new players clients
             pv.RPC("RPC_AddCharacter", RpcTarget.AllBuffered, PlayerInfo.pi.mySelectedCharacter);
+        }
+        else
+        {
+            Destroy(myCamera);
+            Destroy(myAL);
         }
     }
 
