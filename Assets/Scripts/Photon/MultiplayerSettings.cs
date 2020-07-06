@@ -9,7 +9,7 @@ public class MultiplayerSettings : MonoBehaviour
     public int maxPlayers;
 
     public int menuScene;
-    public int multiPlayerScene;
+    public int multiPlayerScene; // Index of level in build
 
 
     private void Awake()

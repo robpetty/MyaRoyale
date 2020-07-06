@@ -9,6 +9,7 @@ public class PhotonPlayer : MonoBehaviour
 {
     private PhotonView pv;
     public GameObject myAvatar;
+    static public string playerNameText;
 
     // Start is called before the first frame update
     void Start()

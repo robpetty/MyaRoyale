@@ -199,7 +199,9 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     {
         currentScene = scene.buildIndex;
 
-        if (currentScene == MultiplayerSettings.multiPlayerSettings.multiPlayerScene)
+        //if (currentScene == MultiplayerSettings.multiPlayerSettings.multiPlayerScene
+        // Presume all non-menu scenes are multiplayer, menu = 0
+        if (currentScene != 0)
         {
             isGameLoaded = true;
 
@@ -214,6 +216,8 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
                 RPC_CreatePlayer();
             }
         }
+
+        Debug.Log("OnSceneFinishedLoading: Loaded " + scene.name + "(" + scene.buildIndex + ")");
     }
 
     [PunRPC]
@@ -232,6 +236,16 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     [PunRPC]
     private void RPC_CreatePlayer()
     {
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonNetworkPlayer"),transform.position, Quaternion.identity, 0);
+        GameObject go = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonNetworkPlayer"),transform.position, Quaternion.identity, 0);
+        PhotonView v = go.GetComponent<PhotonView>();
+        log = "RPC_CreatePlayer: Creating PhontonNetworkPlayer " + v.Owner.ActorNumber.ToString() + " in room " + PhotonNetwork.CurrentRoom.Name;
+        Debug.Log("RPC_CreatePlayer: Creating PhontonNetworkPlayer " + v.Owner.ActorNumber.ToString());
+    }
+
+    string log;
+
+    void OnGUI()
+    {
+        GUI.TextArea(new Rect(10, 10, Screen.width - 150, Screen.height - (int)(Screen.height * .8)), log);
     }
 }

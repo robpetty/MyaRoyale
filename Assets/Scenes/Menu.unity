@@ -156,6 +156,7 @@ MonoBehaviour:
   - {fileID: 1030883649362465846, guid: dc545a7bbdd7238418e202ff67859a9c, type: 3}
   - {fileID: 594712063523794131, guid: fd5c3488796d9b540bdfb8d8d713e31b, type: 3}
   - {fileID: 1910517022641977604, guid: dbd0f1cf28de30849aeed6a0c28aa58e, type: 3}
+  playerNameText: 
 --- !u!4 &217014763
 Transform:
   m_ObjectHideFlags: 0
